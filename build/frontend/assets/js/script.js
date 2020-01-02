@@ -38,9 +38,50 @@ const makeRequest = opts => {
   });
 };
 let els = {
-  
+  container: document.querySelector(".container"),
+  containerToggle: document.querySelector("#container-toggle")
 };
 
-window.onload = () => {
-
+const handleIframe = evt => {
+  console.log(evt.target);
+  let i = 1;
+  Array.from(document.querySelectorAll(".iframe")).map(el => {
+    console.log(el === evt.target);
+    if (el === evt.target) {
+      els.containerToggle.checked = true;
+      el.className = "iframe hero";
+    } else {
+      el.className = `iframe foot${i}`;
+      i++;
+    }
+  });
 };
+
+els.container.addEventListener("click", handleIframe, false);
+
+// window.onload = () => {};
+const urls = [
+  `https://wot.epa.gov.tw/`,
+  `https://wot.epa.gov.tw/`,
+  `https://wot.epa.gov.tw/`,
+  `https://wot.epa.gov.tw/`,
+  `https://wot.epa.gov.tw/`,
+  `https://wot.epa.gov.tw/`
+];
+const appendIframe = urls => {
+  urls.forEach((url, idx) => {
+    const markup = `<div class="iframe" data-number="iframe--${idx}"></div>`;
+    // const markup =
+    //  `<div class="iframe__container" data-number="iframe--1">
+    //     <iframe
+    //      src="https://wot.epa.gov.tw/"
+    //      frameborder="0"
+    //       class="iframe">
+    //     </iframe>
+    //     <div class="iframe__cover"></div>
+    //   </div>`;
+    els.container.insertAdjacentHTML("beforeend", markup);
+  });
+};
+
+appendIframe(urls);

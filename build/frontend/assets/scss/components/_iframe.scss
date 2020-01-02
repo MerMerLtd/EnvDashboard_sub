@@ -1,0 +1,74 @@
+.iframe {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  &__container {
+    position: relative;
+  }
+  &__cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+  }
+}
+.checkbox:checked ~ .container .iframe {
+  &.hero {
+    grid-row-start: 1;
+    grid-row-end: 5;
+    grid-column-start: 1;
+    grid-column-end: 6;
+  }
+  &.foot1 {
+    grid-row-start: 5;
+    grid-row-end: 6;
+    grid-column-start: 1;
+    grid-column-end: 2;
+  }
+  &.foot2 {
+    grid-row-start: 5;
+    grid-row-end: 6;
+    grid-column-start: 2;
+    grid-column-end: 3;
+  }
+  &.foot3 {
+    grid-row-start: 5;
+    grid-row-end: 6;
+    grid-column-start: 3;
+    grid-column-end: 4;
+  }
+  &.foot4 {
+    grid-row-start: 5;
+    grid-row-end: 6;
+    grid-column-start: 4;
+    grid-column-end: 5;
+  }
+  &.foot5 {
+    grid-row-start: 5;
+    grid-row-end: 6;
+    grid-column-start: 5;
+    grid-column-end: 6;
+  }
+}
+
+[data-number="iframe--0"] {
+  background-color: violet;
+}
+[data-number="iframe--1"] {
+  background-color: purple;
+}
+[data-number="iframe--2"] {
+  background-color: goldenrod;
+}
+[data-number="iframe--3"] {
+  background-color: green;
+}
+[data-number="iframe--4"] {
+  background-color: bisque;
+}
+[data-number="iframe--5"] {
+  background-color: rosybrown;
+}
