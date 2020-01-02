@@ -1,9 +1,7 @@
 .container {
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   padding: 3rem;
-  transition: all 0.2s;
-  overflow: scroll;
-  
-  display: grid;
+  display: flex;
+  flex-direction: column;
 }

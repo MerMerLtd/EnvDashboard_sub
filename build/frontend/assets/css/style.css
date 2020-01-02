@@ -74,21 +74,18 @@ body {
   font-weight: 400;
   font-size: 2rem;
   line-height: 1;
-  color: #fff; }
+  color: #666; }
 
 .heading-primary {
-  font-size: 2.4rem;
+  font-size: 6rem;
   font-weight: 300;
   margin-bottom: 1rem; }
 
-.heading-secondary {
-  font-size: 2.4rem;
-  font-weight: 400;
-  line-height: 2; }
-
 .paragraph {
+  color: #fff;
   font-size: 2rem;
-  line-height: 2; }
+  line-height: 2;
+  font-weight: 100; }
 
 .caption {
   font-size: 1.6rem;
@@ -132,7 +129,7 @@ body {
   display: inline-block;
   transition: all 0.2s;
   position: relative;
-  font-size: 2.4rem;
+  font-size: 6rem;
   border: none;
   cursor: pointer; }
 
@@ -161,7 +158,7 @@ body {
     color: #595959; }
 
 .btn-text:link, .btn-text:visited {
-  font-size: 2.4rem;
+  font-size: 6rem;
   color: #49BDCA;
   display: inline-block;
   text-decoration: none;
@@ -182,17 +179,28 @@ body {
 .checkbox {
   display: none; }
 
-.checkbox ~ .container {
+.checkbox ~ .container .iframe__main {
+  background-color: pink;
+  height: 0; }
+
+.checkbox:checked ~ .container .iframe__main {
   background-color: palevioletred;
-  grid-template-columns: repeat(3, 1fr);
+  height: 100%;
+  flex: 4; }
+
+.checkbox ~ .container .iframe__menu {
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, 1fr);
   column-gap: 3rem;
-  row-gap: 3rem; }
+  row-gap: 3rem;
+  align-items: center; }
 
-.checkbox:checked ~ .container {
-  background-color: pink;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(5, 1fr); }
+.checkbox:checked ~ .container .iframe__menu {
+  margin-top: 2rem;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  flex: 1;
+  column-gap: 2rem; }
 
 .checkbox__button {
   display: none;
@@ -239,18 +247,29 @@ body {
 
 .container {
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   padding: 3rem;
-  transition: all 0.2s;
-  overflow: scroll;
-  display: grid; }
+  display: flex;
+  flex-direction: column; }
 
 .iframe {
   width: 100%;
-  height: 100%;
-  background-color: #fff; }
-  .iframe__container {
+  height: 100%; }
+  .iframe__main {
+    width: 100%;
+    transition: all 0.5s; }
+  .iframe__menu {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    transition: all 0.5s; }
+  .iframe__img-box {
+    width: 100%;
+    height: 100%;
     position: relative; }
+  .iframe__img {
+    width: 100%;
+    height: 100%; }
   .iframe__cover {
     position: absolute;
     top: 0;
@@ -260,56 +279,20 @@ body {
     height: 100%;
     background-color: #fff; }
 
-.checkbox:checked ~ .container .iframe.hero {
-  grid-row-start: 1;
-  grid-row-end: 5;
-  grid-column-start: 1;
-  grid-column-end: 6; }
+.layout {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column; }
+  .layout > .section {
+    flex: 1; }
 
-.checkbox:checked ~ .container .iframe.foot1 {
-  grid-row-start: 5;
-  grid-row-end: 6;
-  grid-column-start: 1;
-  grid-column-end: 2; }
+.header {
+  padding: 3rem 3rem 0 3rem; }
 
-.checkbox:checked ~ .container .iframe.foot2 {
-  grid-row-start: 5;
-  grid-row-end: 6;
-  grid-column-start: 2;
-  grid-column-end: 3; }
-
-.checkbox:checked ~ .container .iframe.foot3 {
-  grid-row-start: 5;
-  grid-row-end: 6;
-  grid-column-start: 3;
-  grid-column-end: 4; }
-
-.checkbox:checked ~ .container .iframe.foot4 {
-  grid-row-start: 5;
-  grid-row-end: 6;
-  grid-column-start: 4;
-  grid-column-end: 5; }
-
-.checkbox:checked ~ .container .iframe.foot5 {
-  grid-row-start: 5;
-  grid-row-end: 6;
-  grid-column-start: 5;
-  grid-column-end: 6; }
-
-[data-number="iframe--0"] {
-  background-color: violet; }
-
-[data-number="iframe--1"] {
-  background-color: purple; }
-
-[data-number="iframe--2"] {
-  background-color: goldenrod; }
-
-[data-number="iframe--3"] {
-  background-color: green; }
-
-[data-number="iframe--4"] {
-  background-color: bisque; }
-
-[data-number="iframe--5"] {
-  background-color: rosybrown; }
+.footer {
+  padding: 2rem;
+  background-color: #4e9bd2;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: 6fr 4fr; }

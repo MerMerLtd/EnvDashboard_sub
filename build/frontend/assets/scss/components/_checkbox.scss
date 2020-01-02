@@ -2,19 +2,32 @@
     &{
         display: none;
     }
-    & ~ .container{
+    & ~ .container .iframe__main{
+        background-color: pink;
+        height: 0;
+    }
+    &:checked  ~ .container .iframe__main{
         background-color: palevioletred;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(2, 1fr);
-    
-        column-gap: 3rem;
-        row-gap: 3rem;
+        height: 100%;
+        flex:4;
     }
 
-    &:checked ~ .container{
-        background-color: pink;
-        grid-template-columns: repeat(5, 1fr);
-        grid-template-rows: repeat(5, 1fr);
+    & ~ .container .iframe__menu{
+
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+
+        column-gap: 3rem;
+        row-gap: 3rem;
+        align-items: center;
+    }
+
+    &:checked ~ .container .iframe__menu{
+        margin-top: 2rem;
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        flex: 1;
+        column-gap: 2rem;
     }
     &__button{
         // background-color: $color-white;

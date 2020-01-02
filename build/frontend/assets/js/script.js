@@ -39,48 +39,67 @@ const makeRequest = opts => {
 };
 let els = {
   container: document.querySelector(".container"),
-  containerToggle: document.querySelector("#container-toggle")
+  containerToggle: document.querySelector("#container-toggle"),
+  iframeMain: document.querySelector(".iframe__main"),
+  iframeMenu: document.querySelector(".iframe__menu"),
 };
 
 const handleIframe = evt => {
-  console.log(evt.target);
-  let i = 1;
-  Array.from(document.querySelectorAll(".iframe")).map(el => {
-    console.log(el === evt.target);
-    if (el === evt.target) {
-      els.containerToggle.checked = true;
-      el.className = "iframe hero";
-    } else {
-      el.className = `iframe foot${i}`;
-      i++;
-    }
-  });
+  if (!evt.target.matches(".iframe__cover")) return;
+  console.log(
+    evt.target,
+    evt.target.parentNode,
+    evt.target.parentNode.dataset.url
+  );
+  els.containerToggle.checked = true;
+  els.iframeMain.innerHTML = "";
+  const url = evt.target.parentNode.dataset.url;
+  const number = evt.target.parentNode.dataset.number;
+  const markup = `<iframe src="${url}" frameborder="0" width="100%" height="100%" data-number=${number}></iframe>`;
+  els.iframeMain.insertAdjacentHTML("afterbegin", markup);
+  // Array.from(document.querySelectorAll(".iframe__container")).map(el => {
+  //   console.log(el === evt.target.parentNode);
+  //   if (el === evt.target.parentNode) {
+  //     els.containerToggle.checked = true;
+  //     el.className = "iframe__container hero";
+  //   } else {
+  //     el.className = `iframe__container foot${i}`;
+  //     i++;
+  //   }
+  // });
 };
 
-els.container.addEventListener("click", handleIframe, false);
+els.iframeMenu.addEventListener("click", handleIframe, false);
 
 // window.onload = () => {};
 const urls = [
   `https://wot.epa.gov.tw/`,
-  `https://wot.epa.gov.tw/`,
-  `https://wot.epa.gov.tw/`,
-  `https://wot.epa.gov.tw/`,
-  `https://wot.epa.gov.tw/`,
-  `https://wot.epa.gov.tw/`
+  `https://opendata.epa.gov.tw/Data/Contents/AQI/`,
+  `https://cems.epa.gov.tw/`,
+  `http://atis.ntpc.gov.tw/`,
+  `https://cems.epa.gov.tw/`,
+  `http://atis.ntpc.gov.tw/`,
+  `https://www.mrpv.org.tw/index.aspx`,
+  `https://www.mrpv.org.tw/index.aspx`
 ];
 const appendIframe = urls => {
   urls.forEach((url, idx) => {
-    const markup = `<div class="iframe" data-number="iframe--${idx}"></div>`;
+    const markup = `
+    <div class="iframe__img-box" data-url="${url}" data-number="${idx + 1}">
+      <img src="./assets/img/iframe__cover--${idx +
+        1}.png" alt="iframe__cover--${idx + 1}" class="iframe__img">
+      <div class="iframe__cover"></div>
+    </div>`;
     // const markup =
-    //  `<div class="iframe__container" data-number="iframe--1">
+    //  `<div class="iframe__container" data-number="iframe--${idx}" data-url="${url}">
     //     <iframe
-    //      src="https://wot.epa.gov.tw/"
+    //      src=""
     //      frameborder="0"
     //       class="iframe">
     //     </iframe>
     //     <div class="iframe__cover"></div>
     //   </div>`;
-    els.container.insertAdjacentHTML("beforeend", markup);
+    els.iframeMenu.insertAdjacentHTML("beforeend", markup);
   });
 };
 
