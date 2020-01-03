@@ -340,7 +340,9 @@ body {
     flex: 1; }
 
 .header {
-  padding: 3rem 3rem 0 3rem; }
+  padding: 3rem 3rem 0 3rem;
+  display: flex;
+  align-items: center; }
 
 .footer {
   padding: 2rem;

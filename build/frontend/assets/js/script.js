@@ -94,14 +94,14 @@ els.iframeMenu.addEventListener("click", handleIframe, false);
 
 // window.onload = () => {};
 const urls = [
-  `https://wot.epa.gov.tw/`,
-  `https://opendata.epa.gov.tw/Data/Contents/AQI/`,
-  `https://cems.epa.gov.tw/`,
+  `https://air10.epa.gov.tw/`,
+  `https://apmis.epa.gov.tw/air1/login`,
+  `210.63.206.171/default/index`,
   `http://atis.ntpc.gov.tw/`,
-  `https://cems.epa.gov.tw/`,
-  `http://atis.ntpc.gov.tw/`,
+  `http://pollution.epd.ntpc.gov.tw/ntpcepd_new/manager/`,
+  `https://epacar.epa.gov.tw/login.aspx`,
   `https://www.mrpv.org.tw/index.aspx`,
-  `https://www.mrpv.org.tw/index.aspx`
+  `https://air.epa.gov.tw/AirEpa_Emergency/login.aspx`
 ];
 const appendIframe = urls => {
   urls.forEach((url, idx) => {
