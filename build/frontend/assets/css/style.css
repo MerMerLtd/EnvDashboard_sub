@@ -77,13 +77,13 @@ body {
   color: #666; }
 
 .heading-primary {
-  font-size: 6rem;
+  font-size: 3rem;
   font-weight: 300;
   margin-bottom: 1rem; }
 
 .paragraph {
   color: #fff;
-  font-size: 2rem;
+  font-size: 1rem;
   line-height: 2;
   font-weight: 100; }
 
@@ -129,7 +129,7 @@ body {
   display: inline-block;
   transition: all 0.2s;
   position: relative;
-  font-size: 6rem;
+  font-size: 3rem;
   border: none;
   cursor: pointer; }
 
@@ -158,7 +158,7 @@ body {
     color: #595959; }
 
 .btn-text:link, .btn-text:visited {
-  font-size: 6rem;
+  font-size: 3rem;
   color: #49BDCA;
   display: inline-block;
   text-decoration: none;
