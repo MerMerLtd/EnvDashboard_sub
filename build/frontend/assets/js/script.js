@@ -41,32 +41,53 @@ let els = {
   container: document.querySelector(".container"),
   containerToggle: document.querySelector("#container-toggle"),
   iframeMain: document.querySelector(".iframe__main"),
-  iframeMenu: document.querySelector(".iframe__menu"),
+  iframeMenu: document.querySelector(".iframe__menu")
+};
+
+const renderLoader = parentNode => {
+  // console.log(parentNode);
+  const markup = `
+  <div class="lds-ellipsis" id="loader">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>`;
+  Array.from(parentNode.children).forEach(
+    child => (child.style.display = "none")
+  );
+  parentNode.insertAdjacentHTML("beforeend", markup);
+};
+
+const removeLoader = parentNode => {
+  console.log("run");
+  document.querySelector("#loader").remove();
+  console.log(parentNode);
+  Array.from(parentNode.children).forEach(child => {
+    child.style.display = "block";
+  });
 };
 
 const handleIframe = evt => {
   if (!evt.target.matches(".iframe__cover")) return;
-  console.log(
-    evt.target,
-    evt.target.parentNode,
-    evt.target.parentNode.dataset.url
-  );
-  els.containerToggle.checked = true;
-  els.iframeMain.innerHTML = "";
+  // console.log(
+  //   evt.target,
+  //   evt.target.parentNode,
+  //   evt.target.parentNode.dataset.url
+  // );
   const url = evt.target.parentNode.dataset.url;
   const number = evt.target.parentNode.dataset.number;
   const markup = `<iframe src="${url}" frameborder="0" width="100%" height="100%" data-number=${number}></iframe>`;
+  Array.from(document.querySelectorAll(".iframe__cover")).forEach(cover =>
+    evt.target === cover
+      ? (cover.style.display = "none")
+      : (cover.style.display = "block")
+  );
+  els.containerToggle.checked = true;
+  els.iframeMain.innerHTML = "";
   els.iframeMain.insertAdjacentHTML("afterbegin", markup);
-  // Array.from(document.querySelectorAll(".iframe__container")).map(el => {
-  //   console.log(el === evt.target.parentNode);
-  //   if (el === evt.target.parentNode) {
-  //     els.containerToggle.checked = true;
-  //     el.className = "iframe__container hero";
-  //   } else {
-  //     el.className = `iframe__container foot${i}`;
-  //     i++;
-  //   }
-  // });
+  renderLoader(els.iframeMain);
+  setTimeout(_ => removeLoader(els.iframeMain), 4000);
 };
 
 els.iframeMenu.addEventListener("click", handleIframe, false);
