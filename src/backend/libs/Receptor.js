@@ -13,8 +13,8 @@ const dvalue = require('dvalue');
 const Bot = require(path.resolve(__dirname, 'Bot.js'));
 const Utils = require(path.resolve(__dirname, 'Utils.js'));
 
-const defaultHTTP = [5566, 80];
-const defaultHTTPS = [7788, 443];
+const defaultHTTP = [5566];
+const defaultHTTPS = [7788];
 
 class Receptor extends Bot {
   constructor() {
