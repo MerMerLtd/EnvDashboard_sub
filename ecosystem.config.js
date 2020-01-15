@@ -37,7 +37,7 @@ module.exports = {
       // 要 clone 的 Git repository
       repo: "git@github.com:MerMerLtd/EnvDashboard_sub.git",
       // 目標服務器上應用程序的路徑
-      path: "/etc/EnvDashboard_sub",
+      path: "/etc/Monitor",
       // cloned後要在服務器上執行的命令
       "post-deploy":
         "npm install && pm2 reload ecosystem.config.js --env production",
