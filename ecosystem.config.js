@@ -2,7 +2,7 @@ module.exports = {
   // app 部份
   apps: [
     {
-      name: "API",
+      name: "Monitor",
       // 入口檔案，以mermer-framework為例
       script: "bin/main.js",
 
